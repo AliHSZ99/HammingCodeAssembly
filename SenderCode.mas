@@ -1,0 +1,240 @@
+﻿// Sender adding the 16 data bit values
+Input
+Store D3
+Input
+Store D5
+Input
+Store D6
+Input 
+Store D7
+Input 
+Store D9
+Input 
+Store D10
+Input 
+Store D11
+Input 
+Store D12
+Input 
+Store D13
+Input 
+Store D14
+Input 
+Store D15
+Input 
+Store D17
+Input 
+Store D18
+Input 
+Store D19
+Input 
+Store D20
+Input 
+Store D21
+
+/ P1 is at 1st index, P2 is at 2nd, P3 at 4th, P4 at 8th, and P5 at 16th.
+/ Now lets find the values of the parity bits
+/ 1. P1 (Parity 1)
+Load D3
+Add D5
+Add D7
+Add D9
+Add D11
+Add D13
+Add D15
+Add D17
+Add D19
+Add D21
+Store paritySum
+P1Loop, Load paritySum
+Skipcond 800
+Jump CheckP1
+Subt subtTwo
+Store paritySum
+Skipcond 800
+Jump CheckP1
+Jump P1Loop
+CheckP1, Load paritySum
+Skipcond 000
+Jump P2Block
+Jump ChangeP1To1
+
+ChangeP1To1, Load P1
+Add addOne
+Store P1
+
+/ 2. P2 (Parity 2)
+P2Block, Load D3
+Add D6
+Add D7
+Add D10
+Add D11
+Add D14
+Add D15
+Add D18
+Add D19
+Store paritySum
+P2Loop, Load paritySum
+Skipcond 800
+Jump CheckP2
+Subt subtTwo
+Store paritySum
+Skipcond 800
+Jump CheckP2
+Jump P2Loop
+CheckP2, Load paritySum
+Skipcond 000
+Jump P3Block
+Jump ChangeP2To1
+
+ChangeP2To1, Load P2
+Add addOne
+Store P2
+
+/ 3. P3 (Parity 3)
+P3Block, Load D5
+Add D6
+Add D7
+Add D12
+Add D13
+Add D14
+Add D15
+Add D20
+Add D21
+Store paritySum
+P3Loop, Load paritySum
+Skipcond 800
+Jump CheckP3
+Subt subtTwo
+Store paritySum
+Skipcond 800
+Jump CheckP3
+Jump P3Loop
+CheckP3, Load paritySum
+Skipcond 000
+Jump P4Block
+Jump ChangeP3To1
+
+ChangeP3To1, Load P3
+Add addOne 
+Store P3
+
+/ 4. P4 (Parity 4)
+P4Block, Load D9
+Add D10
+Add D11
+Add D12
+Add D13
+Add D14
+Add D15
+Store paritySum
+P4Loop, Load paritySum
+Skipcond 800
+Jump CheckP4
+Subt subtTwo
+Store paritySum
+Skipcond 800
+Jump CheckP4
+Jump P4Loop
+CheckP4, Load paritySum
+Skipcond 000
+Jump P5Block
+Jump ChangeP4To1
+
+ChangeP4To1, Load P4
+Add addOne 
+Store P4
+
+/ 5. P5 (Parity 5)
+P5Block, Load D17
+Add D18
+Add D19
+Add D20
+Add D21
+Store paritySum
+P5Loop, Load paritySum
+Skipcond 800
+Jump CheckP5
+Subt subtTwo
+Store paritySum
+Skipcond 800
+Jump CheckP5
+Jump P5Loop
+CheckP5, Load paritySum
+Skipcond 000
+Jump EndProgram
+Jump ChangeP5To1
+
+ChangeP5To1, Load P5
+Add addOne
+Store P5
+
+/ Output the message from highest order bit to lowest order. Stop the program.
+EndProgram, Load D21
+Output
+Load D20
+Output
+Load D19
+Output
+Load D18
+Output
+Load D17
+Output
+Load P5
+Output
+Load D15
+Output
+Load D14
+Output
+Load D13
+Output
+Load D12
+Output
+Load D11
+Output
+Load D10
+Output
+Load D9
+Output
+Load P4
+Output
+Load D7
+Output
+Load D6
+Output
+Load D5
+Output
+Load P3
+Output
+Load D3
+Output
+Load P2
+Output
+Load P1
+Output
+Halt
+
+D3, DEC 0
+D5, DEC 0
+D6, DEC 0
+D7, DEC 0
+D9, DEC 0
+D10, DEC 0
+D11, DEC 0
+D12, DEC 0
+D13, DEC 0
+D14, DEC 0
+D15, DEC 0
+D17, DEC 0
+D18, DEC 0
+D19, DEC 0
+D20, DEC 0
+D21, DEC 0
+P1, DEC 0
+P2, DEC 0
+P3, DEC 0
+P4, DEC 0
+P5, DEC 0
+paritySum, DEC 0
+subtTwo, DEC 2
+addOne, DEC 1

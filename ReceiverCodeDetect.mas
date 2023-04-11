@@ -1,0 +1,226 @@
+Input
+Store P1
+Input
+Store P2
+Input
+Store D3
+Input
+Store P3
+Input
+Store D5
+Input
+Store D6
+Input 
+Store D7
+Input
+Store P4
+Input 
+Store D9
+Input 
+Store D10
+Input 
+Store D11
+Input 
+Store D12
+Input 
+Store D13
+Input 
+Store D14
+Input 
+Store D15
+Input
+Store P5
+Input 
+Store D17
+Input 
+Store D18
+Input 
+Store D19
+Input 
+Store D20
+Input 
+Store D21
+Jump P1Block
+
+
+P1Block, Load D3
+Add D5
+Add D7
+Add D9
+Add D11
+Add D13
+Add D15
+Add D17
+Add D19
+Add D21
+Store paritySum
+Jump P1Loop
+P1Loop, Load paritySum
+Skipcond 800
+Jump CheckP1 // if paritySum is negative or equal to 0
+Subt subtTwo
+Store paritySum
+Skipcond 800
+Jump CheckP1 // if paritySum is negative or equal to 0
+Jump P1Loop
+
+CheckP1, Load paritySum
+SkipCond 400
+Add subtTwo // if paritySum is not equal to zero, meaning that the only possibility is that it is -1
+Store paritySum
+Load paritySum
+Subt P1
+SkipCond 400
+Jump ErrorOccured // if they are not equal to 0, meaning that the parity is not correct
+Jump P2Block
+
+
+P2Block, Load D3
+Add D6
+Add D7
+Add D10
+Add D11
+Add D14
+Add D15
+Add D18
+Add D19
+Store paritySum
+Jump P2Loop
+P2Loop, Load paritySum
+Skipcond 800
+Jump CheckP2
+Subt subtTwo
+Store paritySum
+Skipcond 800
+Jump CheckP2
+Jump P2Loop
+
+CheckP2, Load paritySum
+SkipCond 400
+Add subtTwo // if paritySum is not equal to zero, meaning that the only possibility is that it is -1
+Store paritySum
+Load paritySum
+Subt P2
+SkipCond 400
+Jump ErrorOccured // if they are not equal to 0, meaning that the parity is not correct
+Jump P3Block
+
+
+P3Block, Load D5
+Add D6
+Add D7
+Add D12
+Add D13
+Add D14
+Add D15
+Add D20
+Add D21
+Store paritySum
+P3Loop, Load paritySum
+Skipcond 800
+Jump CheckP3
+Subt subtTwo
+Store paritySum
+Skipcond 800
+Jump CheckP3
+Jump P3Loop
+
+CheckP3, Load paritySum
+SkipCond 400
+Add subtTwo // if paritySum is not equal to zero, meaning that the only possibility is that it is -1
+Store paritySum
+Load paritySum
+Subt P3
+SkipCond 400
+Jump ErrorOccured // if they are not equal to 0, meaning that the parity is not correct
+Jump P4Block
+
+
+P4Block, Load D9
+Add D10
+Add D11
+Add D12
+Add D13
+Add D14
+Add D15
+Store paritySum
+P4Loop, Load paritySum
+Skipcond 800
+Jump CheckP4
+Subt subtTwo
+Store paritySum
+Skipcond 800
+Jump CheckP4
+Jump P4Loop
+
+CheckP4, Load paritySum
+SkipCond 400
+Add subtTwo // if paritySum is not equal to zero, meaning that the only possibility is that it is -1
+Store paritySum
+Load paritySum
+Subt P4
+SkipCond 400
+Jump ErrorOccured // if they are not equal to 0, meaning that the parity is not correct
+Jump P5Block
+
+P5Block, Load D17
+Add D18
+Add D19
+Add D20
+Add D21
+Store paritySum
+P5Loop, Load paritySum
+Skipcond 800
+Jump CheckP5
+Subt subtTwo
+Store paritySum
+Skipcond 800
+Jump CheckP5
+Jump P5Loop
+
+CheckP5, Load paritySum
+SkipCond 400
+Add subtTwo // if paritySum is not equal to zero, meaning that the only possibility is that it is -1
+Store paritySum
+Load paritySum
+Subt P4
+SkipCond 400
+Jump ErrorOccured // if they are not equal to 0, meaning that the parity is not correct
+Jump DisplayError // display
+
+ErrorOccured, Load IsError
+Add addOne
+Store IsError
+Jump DisplayError
+
+DisplayError, Load IsError
+Output
+Halt
+
+// variables
+D3, DEC 0
+D5, DEC 0
+D6, DEC 0
+D7, DEC 0
+D9, DEC 0
+D10, DEC 0
+D11, DEC 0
+D12, DEC 0
+D13, DEC 0
+D14, DEC 0
+D15, DEC 0
+D17, DEC 0
+D18, DEC 0
+D19, DEC 0
+D20, DEC 0
+D21, DEC 0
+P1, DEC 0
+P2, DEC 0
+P3, DEC 0
+P4, DEC 0
+P5, DEC 0
+paritySum, DEC 0
+subtTwo, DEC 2
+addOne, DEC 1
+
+IsError, DEC 0

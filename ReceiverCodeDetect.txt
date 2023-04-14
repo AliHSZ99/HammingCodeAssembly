@@ -42,7 +42,7 @@ Input
 Store D21
 Jump P1Block
 
-
+// Sum for P1
 P1Block, Load D3
 Add D5
 Add D7
@@ -64,9 +64,10 @@ Skipcond 800
 Jump CheckP1 // if paritySum is negative or equal to 0
 Jump P1Loop
 
+// Checking if P1 is correct
 CheckP1, Load paritySum
 SkipCond 400
-Add subtTwo // if paritySum is not equal to zero, meaning that the only possibility is that it is -1
+Add subtTwo // if paritySum is not equal to zero, meaning that the only possibility is that it is -1, so flip it to 1
 Store paritySum
 Load paritySum
 Subt P1
@@ -74,7 +75,7 @@ SkipCond 400
 Jump ErrorOccured // if they are not equal to 0, meaning that the parity is not correct
 Jump P2Block
 
-
+// Sum for P2
 P2Block, Load D3
 Add D6
 Add D7
@@ -95,9 +96,10 @@ Skipcond 800
 Jump CheckP2
 Jump P2Loop
 
+// Checking if P2 is correct
 CheckP2, Load paritySum
 SkipCond 400
-Add subtTwo // if paritySum is not equal to zero, meaning that the only possibility is that it is -1
+Add subtTwo // if paritySum is not equal to zero, meaning that the only possibility is that it is -1, so flip it to 1
 Store paritySum
 Load paritySum
 Subt P2
@@ -105,7 +107,7 @@ SkipCond 400
 Jump ErrorOccured // if they are not equal to 0, meaning that the parity is not correct
 Jump P3Block
 
-
+// Sum for P3
 P3Block, Load D5
 Add D6
 Add D7
@@ -125,9 +127,10 @@ Skipcond 800
 Jump CheckP3
 Jump P3Loop
 
+// Checking if P3 is correct
 CheckP3, Load paritySum
 SkipCond 400
-Add subtTwo // if paritySum is not equal to zero, meaning that the only possibility is that it is -1
+Add subtTwo // if paritySum is not equal to zero, meaning that the only possibility is that it is -1, so flip it to 1
 Store paritySum
 Load paritySum
 Subt P3
@@ -135,7 +138,7 @@ SkipCond 400
 Jump ErrorOccured // if they are not equal to 0, meaning that the parity is not correct
 Jump P4Block
 
-
+// Sum for P4
 P4Block, Load D9
 Add D10
 Add D11
@@ -153,9 +156,10 @@ Skipcond 800
 Jump CheckP4
 Jump P4Loop
 
+// Checking if P4 is correct
 CheckP4, Load paritySum
 SkipCond 400
-Add subtTwo // if paritySum is not equal to zero, meaning that the only possibility is that it is -1
+Add subtTwo // if paritySum is not equal to zero, meaning that the only possibility is that it is -1, so flip it to 1
 Store paritySum
 Load paritySum
 Subt P4
@@ -163,6 +167,7 @@ SkipCond 400
 Jump ErrorOccured // if they are not equal to 0, meaning that the parity is not correct
 Jump P5Block
 
+// Sum for P5
 P5Block, Load D17
 Add D18
 Add D19
@@ -178,9 +183,10 @@ Skipcond 800
 Jump CheckP5
 Jump P5Loop
 
+// Checking if P5 is correct
 CheckP5, Load paritySum
 SkipCond 400
-Add subtTwo // if paritySum is not equal to zero, meaning that the only possibility is that it is -1
+Add subtTwo // if paritySum is not equal to zero, meaning that the only possibility is that it is -1, so flip it to 1
 Store paritySum
 Load paritySum
 Subt P4
@@ -188,11 +194,13 @@ SkipCond 400
 Jump ErrorOccured // if they are not equal to 0, meaning that the parity is not correct
 Jump DisplayError // display
 
+// jump to this block to change the IsError variable to 1 and display the error
 ErrorOccured, Load IsError
 Add addOne
 Store IsError
 Jump DisplayError
 
+// to display if there is an error or not
 DisplayError, Load IsError
 Output
 Halt
